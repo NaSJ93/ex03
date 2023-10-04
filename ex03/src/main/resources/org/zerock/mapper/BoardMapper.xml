@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>				
+<!DOCTYPE mapper 
+	PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.zerock.mapper.BoardMapper">
+	<!-- 내용에 대해 id를 지정하고 id를 이용해 삽입을 지원 -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=") and" prefixOverrides="or">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="or">
+					<choose>
+						<when test='type=="T"'>
+							title like '%'||#{keyword}||'%'
+							</when>
+						<when test='type=="C"'>
+							content like '%'||#{keyword}||'%'
+							</when>
+						<when test='type=="W"'>
+							writer like '%'||#{keyword}||'%'		
+						</when>
+					</choose>
+				</trim>			
+			</foreach>		
+		</trim>	
+	</sql>
+	
+	
+	<!-- id는 메소드 이름, resultType은 결과를 넣어줄 객체 -->
+	<!-- resultType은 select 문에만 필요 -->
+	<select id="getList" resultType="org.zerock.domain.BoardVO">	
+		select * from tbl_board	order by bno desc
+	</select>
+	
+	<select id="read" resultType="org.zerock.domain.BoardVO">	
+		select * from tbl_board where bno=#{bno}
+	</select>
+		
+			<!-- 삽입이라서 리절트가 필요없음 -->
+	<insert id="insert">
+		insert into TBL_BOARD(BNO,TITLE,content,writer)
+		values(seq_board.nextval,#{title},#{content},#{writer})
+	</insert>
+	
+	<insert id="insertSelectKey">	<!-- 190p -->	<!-- 숫자 하나만 출력되므로 배열은 아니고 Long이므로 그거에 대응되는 소문자 long-->
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+			select seq_board.nextval from dual
+		</selectKey>
+		insert into TBL_BOARD(BNO,TITLE,content,writer)
+		values(#{bno},#{title},#{content},#{writer})
+	</insert>
+	
+	<update id="update">
+		update tbl_board set title=#{title},content=#{content},updatedate=sysdate where bno=#{bno}  
+	</update>
+	
+	<delete id="delete">
+		delete from tbl_board where bno=#{bno}
+	</delete>
+	
+	<!-- <![CDATA[ ]]> -->
+	<!-- 부등호 '<'를 태크입력할떄 쓰는 <> 이걸로 인식해버리니 이건 명령문이라는 걸 알려주는 것 -->	
+	<select id="rank" resultType="org.zerock.domain.RankVO"> 
+	<![CDATA[select *
+		from (select WRITER,count(WRITER)"count" 
+		        from tbl_board 
+		        group by writer 
+		        order by "count" desc)
+		where rownum<6		
+		]]>			<!-- count(WRITER) desc를 안하는 이유는 객체이름이 RankVO의 count인데 이거에 대응이 안돼기 때문 -->
+	</select>		<!-- 그래서 헷갈리지 않게 ""를 붙여서 설정 -->
+	
+	<select id="count" resultType="long">
+		select count(*) from TBL_BOARD 
+		<where>
+			<trim suffixOverrides="and">
+				<include refid="criteria"></include>			
+			</trim>
+		</where>
+	</select>
+	
+	<select id="lastBoard"  resultType="org.zerock.domain.BoardVO">
+	<![CDATA[select *
+			from (select *
+			    from tbl_board          
+			    order by updatedate desc) 
+			where rownum<6
+	]]>	
+	</select>
+	
+	<select id="statTime" resultType="org.zerock.domain.TimeVO">
+		select to_char(regdate,'HH24') "time", count(to_char(regdate,'HH24'))"count"
+		from tbl_board
+		group by to_char(regdate,'HH24')
+		order by to_char(regdate,'HH24')
+	</select>
+		
+	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">	
+		<![CDATA[select bno,title,writer,regdate,updatedate,good
+		from (select /*+INDEX_DESC(tbl_board tbl_board_pk)*/ 
+					rownum rn,bno,title,writer,regdate,updatedate,good 
+					from tbl_board where
+		]]>		
+		<include refid="criteria"></include>	 
+		<![CDATA[			
+					rownum<=#{pageNum}*#{amount})
+		where rn>(#{pageNum}-1)*#{amount}
+		]]>	
+	</select>	
+		
+	<update id="insertGood">
+		update tbl_board set good=good+1 where bno=#{bno}
+	</update>
+	
+	<select id="countGood" resultType="long">
+		select good from tbl_board where bno=#{bno}
+	</select>	
+		
+</mapper>
