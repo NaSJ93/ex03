@@ -35,4 +35,14 @@ public class ReplyServicelmpl implements ReplyService {
 		return mapper.delete(rno);
 	}
 
+	@Override
+	public ReplyVO get(Long rno) {
+		return mapper.get(rno);
+	}
+
+	@Override
+	public int count(Long bno) {		
+		return mapper.count(bno);
+	}
+
 }

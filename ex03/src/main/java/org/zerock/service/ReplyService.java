@@ -17,5 +17,11 @@ public interface ReplyService {
 		
 		//댓글삭제
 		int remove(Long rno);
+		
+		//댓글 한게 보기
+		ReplyVO get(Long rno);	//get /replies/2
+		
+		//
+		int count(Long bno);
 
 }

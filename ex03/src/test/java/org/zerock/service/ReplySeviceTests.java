@@ -45,4 +45,8 @@ public class ReplySeviceTests {			//여기까지 209p
 		log.info("삭제결과:"+service.remove(12L));		
 	}	
 	
+	@Test
+	public void TestGet() {
+		log.info("댓글 : "+service.get(1L));
+	}
 }

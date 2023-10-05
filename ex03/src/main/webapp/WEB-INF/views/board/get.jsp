@@ -60,6 +60,21 @@
   <%--footer 파일 넣기 --%>    
 <%@ include file="../includes/footer.jsp" %>
 
+<%--댓글 처리 자바 스크립트 --%>
+<script src="/resources/js/reply.js"></script>
+<script>
+	console.log(replyService);
+	reply={reply:"자바스크립트로 테스트",replyer:"테스트",bno:997}
+	reply2={reply:"자바스크립트로 테스트"}
+	b=34;
+	//replyService.add(reply);
+										//callback 함수
+	//replyService.getList(996,function(a){console.log(a)});
+	//replyService.getDelete(b,console.log(b+" 삭제됨"));
+	//replyService.getModi(18,reply2);
+	replyService.getOne(11,function(a){console.log(a)});
+</script>
+
 <script>
 $("#countA").on("click",function(){
 	//$(this).parents().attr("href","get?bno=${board.bno}&pageNum=${cri.pageNum}&amount=${cri.amount}");

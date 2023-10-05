@@ -19,4 +19,12 @@
 		delete from tbl_reply where rno=#{rno}
 	</delete>	
 	
+	<select id="get" resultType="org.zerock.domain.ReplyVO">
+	SELECT * FROM TBL_REPLY where rno=#{rno}
+	</select>
+	
+	<select id="count" resultType="int">
+	SELECT count(*) FROM TBL_REPLY where bno=#{bno}
+	</select>
+	
 </mapper>

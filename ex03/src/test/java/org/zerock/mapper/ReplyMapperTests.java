@@ -47,5 +47,14 @@ public class ReplyMapperTests {
 		log.info("삭제결과:"+replyMapper.delete(6L));
 	}
 	
+	@Test
+	public void TestGet() {
+		log.info("댓글 : "+replyMapper.get(1L));
+	}
+	
+	@Test
+	public void coun() {
+		log.info("ddddd:"+replyMapper.count(996L));
+	}
 	
 }

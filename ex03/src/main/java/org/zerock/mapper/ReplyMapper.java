@@ -17,5 +17,11 @@ public interface ReplyMapper {
 	
 	//댓글삭제
 	int delete(Long rno);
+	
+	//댓글 한게 보기
+	ReplyVO get(Long rno);
+	
+	//
+	int count(Long bno);
 
 }

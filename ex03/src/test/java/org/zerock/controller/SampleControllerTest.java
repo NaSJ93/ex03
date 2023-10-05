@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.zerock.domain.ReplyVO;
 import org.zerock.domain.SampleVO;
 
 import com.google.gson.Gson;
@@ -43,7 +44,7 @@ public class SampleControllerTest {
 	public void testTicket() throws Exception {												
 		//넣어주기 위한 json data
 		SampleVO vo =new SampleVO(2, "abc", "def");
-		Gson gson=new Gson();
+		Gson gson=new Gson();	//json 형태 직접 안만들고 Gson 이용해서 해결하는 법
 		String jsonData=gson.toJson(vo);
 		log.info("json 형태로 변환"+jsonData);
 		
@@ -54,5 +55,14 @@ public class SampleControllerTest {
 	//crud = create, read, update,delete
 	//method=get,post,put,delete		~370p
 	
+	//json 만들기
+	@Test
+	public void makeJson() {
+		ReplyVO vo=new ReplyVO();
+		vo.setBno(996L);
+		vo.setReply("json테스트");
+		vo.setReplyer("json테스터");
+		log.info("json문자열:"+new Gson().toJson(vo));
+	}
 	
 }
