@@ -56,7 +56,7 @@ public class ReplyController {
 			return new ResponseEntity<String>(HttpStatus.I_AM_A_TEAPOT);
 	}
 	
-	@PutMapping("/{rno}")
+	@PutMapping(value = "/{rno}",produces="text/plain;charset=UTF-8")
 	public ResponseEntity<String> urlPut(@PathVariable("rno") Long rno, @RequestBody ReplyVO vo) {
 		vo.setRno(rno);
 		return (service.modify(vo)== 1) 
