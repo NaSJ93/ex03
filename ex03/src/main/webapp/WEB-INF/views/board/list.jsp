@@ -170,7 +170,7 @@ $.ajax({
 
 $.ajax({
 	type:"put",
-	url:"/myapi/bestbno",	
+	url:"/myapi/bestbno.json",	
 	success:function(data){
 	$("#ccc").text(data);	
 	}		
