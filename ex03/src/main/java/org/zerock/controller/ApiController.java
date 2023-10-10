@@ -67,7 +67,7 @@ public class ApiController {
 		return service.getList(cri);
 	}	
 	
-	//검색
+	//검색 | {"type":"T","keyword":"aa"}
 	@PostMapping(value="/myapi/board/{num1}/{num2}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<BoardVO> list(@PathVariable("num1") int pageNum,@PathVariable("num2") int amount, @RequestBody Criteria cri) {
 		cri.setAmount(amount);

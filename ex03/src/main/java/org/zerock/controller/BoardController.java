@@ -124,6 +124,9 @@ public class BoardController {		//211p
 		
 	}
 	*/
-	
+	@GetMapping("/newsearch")
+	public void gdd() {
+		
+	}
 	
 }
