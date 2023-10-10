@@ -50,7 +50,7 @@
         <c:forEach items="${list }" var="board">
         	<tr>
         		<td><c:out value='${board.bno}'/></td>
-                <td><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}"><c:out value=' ${board.title}'/></a></td>
+                <td><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}"><c:out value=' ${board.title}'/></a>(댓글 수 : <c:out value='${board.replycount}'/>)</td>
                 <td><c:out value=' ${board.writer}'/></td>
                 <td class="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}"/></td>
                 <td class="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updatedate}"/></td>
@@ -155,6 +155,6 @@
 	</script>
 	
 	
-	
+
 	
 	

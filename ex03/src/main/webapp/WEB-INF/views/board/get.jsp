@@ -98,7 +98,7 @@ function replyList(){
 	//1.해당하는 게시글의 댓글 목록 가져오고
 	replyService.getList(${board.bno},function(reply){
 		//2.댓글 잘 가공해서 화면에 넣을 내용 만들기 (html)
-		console.log(reply)
+		console.log(reply);
 		replyStr="";
 		for(var i=0; i<reply.length; i++){
 		//	replyStr +="<li>"+reply[i].reply+"("+reply[i].replyer+") - "+reply[i].replydate+"</li>";												//id가 아닌 class인 이유 : 여러개라서
@@ -185,7 +185,7 @@ $("#chat").on("click",".replyModify",function(e){
 
 </script>
 
-<script>
+<script>	
 $("#countA").on("click",function(){
 	//$(this).parents().attr("href","get?bno=${board.bno}&pageNum=${cri.pageNum}&amount=${cri.amount}");
 });

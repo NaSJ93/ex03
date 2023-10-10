@@ -13,6 +13,7 @@ public class BoardVO {
 	private Date regdate;
 	private Date updatedate;
 	private Long good;
+	private Long replycount;
 	
 
 }
