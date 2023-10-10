@@ -31,7 +31,7 @@
 						</form>					
 						</div>
 						</div>
-                           게시글 수:${count},<div>댓글 달린 게시글 수:${countRp},가장 많은 댓글 달린 게시글:${bnoCount}</div>
+                           게시글 수:${count},<div>관심글개수 : <span id="bbb"></span>,가장많은글 : <span id="ccc"></span></div>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -157,4 +157,24 @@
 	
 
 	
-	
+<%--api 자바 스크립트 --%>
+<script src="/resources/js/myapi.js"></script>
+<script>
+$.ajax({
+	type:"get",
+	url:"/myapi/replybnocount",	
+	success:function(data){
+	$("#bbb").text(data);	
+	}		
+});
+
+$.ajax({
+	type:"put",
+	url:"/myapi/bestbno",	
+	success:function(data){
+	$("#ccc").text(data);	
+	}		
+});
+
+
+</script>
