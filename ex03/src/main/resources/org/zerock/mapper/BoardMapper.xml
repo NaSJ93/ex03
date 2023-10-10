@@ -123,5 +123,10 @@
 		select count(*) from (SELECT bno FROM TBL_REPLY group by bno)
 	</select>	<!-- SELECT count(distinct bno) FROM TBL_REPLY 로 해도 됨-->
 	
+	<select id="bnoCount" resultType="long">
+		select bno
+		from (select bno,count(*)rcount from tbl_reply group by bno)
+		where rcount=(select max(count(*))maxreply from tbl_reply group by bno)
+	</select>
 		
 </mapper>

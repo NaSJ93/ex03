@@ -37,4 +37,6 @@ public interface BoardService {	//198p
 	Date date();
 	
 	Long countRp();
+	
+	Long bnoCount();
 }

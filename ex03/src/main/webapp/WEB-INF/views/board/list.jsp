@@ -31,7 +31,7 @@
 						</form>					
 						</div>
 						</div>
-                           게시글 수:${count},<div>댓글 달린 게시글 수:${countRp}</div>
+                           게시글 수:${count},<div>댓글 달린 게시글 수:${countRp},가장 많은 댓글 달린 게시글:${bnoCount}</div>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

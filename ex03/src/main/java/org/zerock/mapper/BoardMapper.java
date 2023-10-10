@@ -52,5 +52,7 @@ public interface BoardMapper {
 	Long countGood(Long bno);
 	
 	Long countRp();
+	
+	Long bnoCount();
 
 }

@@ -34,6 +34,7 @@ public class BoardController {		//211p
 		log.info(service.date());
 		model.addAttribute("date", service.date());
 		model.addAttribute("countRp", service.countRp());
+		model.addAttribute("bnoCount", service.bnoCount());
 
 		//-->board.list.jsp
 	}

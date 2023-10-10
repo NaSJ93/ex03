@@ -87,4 +87,9 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.countRp();
 	}
 
+	@Override
+	public Long bnoCount() {
+		return mapper.bnoCount();
+	}
+
 }
