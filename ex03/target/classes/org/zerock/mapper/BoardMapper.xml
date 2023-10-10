@@ -118,5 +118,10 @@
 	<select id="countGood" resultType="long">
 		select good from tbl_board where bno=#{bno}
 	</select>	
+<!--댓글 달린 게시글 수 -->
+	<select id="countRp" resultType="long">	
+		select count(*) from (SELECT bno FROM TBL_REPLY group by bno)
+	</select>	<!-- SELECT count(distinct bno) FROM TBL_REPLY 로 해도 됨-->
+	
 		
 </mapper>

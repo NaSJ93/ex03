@@ -62,4 +62,10 @@ public class BoardSeviceTests {			//여기까지 209p
 	public void TestDate() {
 		log.info(service.date());
 	}
+	
+	@Test
+	public void Tesdd() {
+		log.info("dddsd"+service.countRp());
+		
+	}
 }

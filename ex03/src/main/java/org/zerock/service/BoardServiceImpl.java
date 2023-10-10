@@ -82,4 +82,9 @@ public class BoardServiceImpl implements BoardService {
 		return date;
 	}
 
+	@Override
+	public Long countRp() {
+		return mapper.countRp();
+	}
+
 }

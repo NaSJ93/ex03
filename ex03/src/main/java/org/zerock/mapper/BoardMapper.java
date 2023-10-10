@@ -51,7 +51,6 @@ public interface BoardMapper {
 	//좋아요 갯수
 	Long countGood(Long bno);
 	
-	//게시글 검색
-	
+	Long countRp();
 
 }

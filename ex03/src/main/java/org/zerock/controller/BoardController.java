@@ -33,6 +33,8 @@ public class BoardController {		//211p
 		model.addAttribute("start", new Criteria());
 		log.info(service.date());
 		model.addAttribute("date", service.date());
+		model.addAttribute("countRp", service.countRp());
+
 		//-->board.list.jsp
 	}
 	
@@ -113,6 +115,7 @@ public class BoardController {		//211p
 			rttr.addFlashAttribute("result", vo.getBno());
 		}
 		return "redirect:/board/list?pageNum="+cri.getPageNum()+"&amount="+cri.getAmount();
+	
 	}
 	/*
 	@GetMapping("/modify")
@@ -120,5 +123,6 @@ public class BoardController {		//211p
 		
 	}
 	*/
+	
 	
 }
