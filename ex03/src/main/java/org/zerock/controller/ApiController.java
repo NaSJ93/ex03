@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.BnoVO;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.PageDTO;
 import org.zerock.domain.Total;
 import org.zerock.service.BoardService;
 import org.zerock.service.ReplyService;
@@ -62,6 +64,14 @@ public class ApiController {
 	@GetMapping(value="/myapi/board/{num1}/{num2}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<BoardVO> list(@PathVariable("num1") int pageNum,@PathVariable("num2") int amount) {
 		Criteria cri=new Criteria(pageNum,amount);		
+		return service.getList(cri);
+	}	
+	
+	//검색
+	@PostMapping(value="/myapi/board/{num1}/{num2}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<BoardVO> list(@PathVariable("num1") int pageNum,@PathVariable("num2") int amount, @RequestBody Criteria cri) {
+		cri.setAmount(amount);
+		cri.setPageNum(pageNum);
 		return service.getList(cri);
 	}
 	
