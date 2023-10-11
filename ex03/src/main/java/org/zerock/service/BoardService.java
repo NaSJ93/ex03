@@ -38,5 +38,5 @@ public interface BoardService {	//198p
 	
 	Long countRp();
 	
-	Long bnoCount();
+	List<BoardVO> bnoCount();
 }

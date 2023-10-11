@@ -42,10 +42,10 @@ public class ApiController {
 	
 	//2.
 	@PutMapping(value = "/myapi/bestbno", produces = MediaType.APPLICATION_JSON_VALUE)
-	public BnoVO bnoCount() {
-		BnoVO bnoVO=new BnoVO();		
-		bnoVO.setBno(service.bnoCount());
-		return bnoVO;
+	public List<BoardVO> bnoCount() {
+		//BnoVO bnoVO=new BnoVO();		
+	//	bnoVO.setBno(service.bnoCount());
+		return service.bnoCount();
 	}
 	//<Total><count>55</count></Total>    | 	{"count":55}
 	//<해당 클래스><해당 변수>

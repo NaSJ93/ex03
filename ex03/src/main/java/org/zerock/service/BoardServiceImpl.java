@@ -88,7 +88,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Long bnoCount() {
+	public List<BoardVO> bnoCount() {
 		return mapper.bnoCount();
 	}
 

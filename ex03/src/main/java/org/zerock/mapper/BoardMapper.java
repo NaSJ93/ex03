@@ -53,6 +53,6 @@ public interface BoardMapper {
 	
 	Long countRp();
 	
-	Long bnoCount();
+	List<BoardVO> bnoCount();
 
 }

@@ -157,8 +157,6 @@
 	
 
 	
-<%--api 자바 스크립트 --%>
-<script src="/resources/js/myapi.js"></script>
 <script>
 $.ajax({
 	type:"get",
@@ -172,7 +170,13 @@ $.ajax({
 	type:"put",
 	url:"/myapi/bestbno.json",	
 	success:function(data){
-	$("#ccc").text(data);	
+		console.log(data);
+		var str="";
+		for(var i=0;i<data.length;i++){
+			str+=data[i]+","
+			console.log(str);
+		}
+		$("#ccc").text(str);	
 	}		
 });
 
