@@ -7,23 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-오늘의 리플 개수 : <span></span> <br>
+오늘의 리플 개수 : <span id="count"></span> <br>
 <button id="ss">확인</button>
-<div></div>
+<div id="list"></div>
 </body>
 <!-- jQuery -->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script>
 $(function(){
-	$("#ss").click(function(){
+	$("#ss").on("click",function(){
+		setInterval(function(){
 		$.ajax({
 			type:"get",
 			url:"/replies/today.json",
 			success:function(result){
 					console.log(result);
-					$('span').text(result);
-				}
-			
+					$('#count').text(result);
+				}			
 		})
 		
 		$.ajax({
@@ -40,10 +40,10 @@ $(function(){
 				}
 				//var aa=JSON.stringify(result)
 				console.log("됐냐",htmlStr);
-				$("div").html(htmlStr);
+				$("#list").html(htmlStr);
 			}
 		})	
-		
+		},1000);
 	});
 });
 </script>
