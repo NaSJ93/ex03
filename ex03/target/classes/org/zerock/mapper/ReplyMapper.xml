@@ -27,4 +27,12 @@
 	SELECT count(*) FROM TBL_REPLY where bno=#{bno}
 	</select>
 	
+	<select id="countToday" resultType="int">
+	select count(*) from tbl_reply where to_char(replydate,'YYYYMMDD')=to_char(sysdate,'YYYYMMDD')	
+	</select>
+	
+	<select id="getToday" resultType="org.zerock.domain.ReplyVO">
+	select reply,replyer from tbl_reply where to_char(replydate,'YYYYMMDD')=to_char(sysdate,'YYYYMMDD') order by replydate desc
+	</select>
+	
 </mapper>

@@ -23,5 +23,10 @@ public interface ReplyMapper {
 	
 	//
 	int count(Long bno);
-
+	
+	//오늘의 댓글 개수
+	int countToday();
+	
+	//오늘의 댓글 목록
+	List<ReplyVO> getToday();
 }

@@ -89,4 +89,16 @@ public class ReplyController {
 		return service.count(vo.getBno());
 	}*/
 	
+	@GetMapping("/today")
+	public int countTo() {
+		return service.countToday();
+	}
+	
+	@GetMapping("/todaylist")
+	public List<ReplyVO> countTo2() {
+		return service.getToday();
+		
+	}
+	
+	
 }

@@ -45,4 +45,16 @@ public class ReplyServicelmpl implements ReplyService {
 		return mapper.count(bno);
 	}
 
+	@Override
+	public int countToday() {
+		
+		return mapper.countToday();
+	}
+
+	@Override
+	public List<ReplyVO> getToday() {
+
+		return mapper.getToday();
+	}
+
 }

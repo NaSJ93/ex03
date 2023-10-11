@@ -129,4 +129,8 @@ public class BoardController {		//211p
 		
 	}
 	
+	@GetMapping("/newReply")
+	public void gdd2() {
+		
+	}
 }
