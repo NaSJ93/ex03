@@ -5,6 +5,7 @@ import java.util.List;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.RankVO;
+import org.zerock.domain.ReplyVO;
 import org.zerock.domain.TimeVO;
 
 public interface BoardMapper {
@@ -54,5 +55,7 @@ public interface BoardMapper {
 	Long countRp();
 	
 	List<BoardVO> bnoCount();
+	
+	List<ReplyVO> bestlist();
 
 }

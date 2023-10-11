@@ -13,6 +13,7 @@ import org.zerock.domain.BnoVO;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
+import org.zerock.domain.ReplyVO;
 import org.zerock.domain.Total;
 import org.zerock.service.BoardService;
 import org.zerock.service.ReplyService;
@@ -75,4 +76,8 @@ public class ApiController {
 		return service.getList(cri);
 	}
 	
+	@GetMapping("/myapi/best")
+	public List<ReplyVO> bestlist(){
+		return service.bestlist();
+	}
 }

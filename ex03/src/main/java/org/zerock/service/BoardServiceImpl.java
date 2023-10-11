@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.ReplyVO;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -90,6 +91,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> bnoCount() {
 		return mapper.bnoCount();
+	}
+
+	@Override
+	public List<ReplyVO> bestlist() {
+		
+		return mapper.bestlist();
 	}
 
 }

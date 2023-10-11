@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.ReplyVO;
 
 public interface BoardService {	//198p
 	//사용자 관점의 서비스
@@ -39,4 +40,6 @@ public interface BoardService {	//198p
 	Long countRp();
 	
 	List<BoardVO> bnoCount();
+	
+	List<ReplyVO> bestlist();
 }

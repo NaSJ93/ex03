@@ -133,4 +133,9 @@ public class BoardController {		//211p
 	public void gdd2() {
 		
 	}
+	
+	@GetMapping("/bestboard")
+	public void gdd3() {
+		
+	}
 }

@@ -128,5 +128,13 @@
 		from (select bno,count(*)rcount from tbl_reply group by bno)
 		where rcount=(select max(count(*))maxreply from tbl_reply group by bno)
 	</select>
+	
+	<select id="bestlist" resultType="org.zerock.domain.BoardVO">
+		<![CDATA[select count,bno,title,bno from(select count(bno)count,bno from tbl_reply where 
+(to_char(replydate,'YYYYMMDD HH24:MI:SS')>=to_char(sysdate-1/24,'YYYYMMDD HH24:MI:SS')) 
+group by bno order by count(bno) desc) join tbl_board using (bno)
+where rownum<4
+		]]>
+	</select>
 		
 </mapper>

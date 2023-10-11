@@ -29,4 +29,6 @@ public interface ReplyService {
 		
 		//오늘의 댓글 목록
 		List<ReplyVO> getToday();
+		
+		
 }
