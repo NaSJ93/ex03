@@ -22,6 +22,7 @@ public interface BoardService {	//198p
 	
 	//4.게시글 삭제
 	boolean remove(Long bno);
+	boolean remove2(Long bno);
 	
 	//5.게시글 상세보기
 	BoardVO get(Long bno);

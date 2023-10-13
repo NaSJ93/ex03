@@ -2,6 +2,7 @@ package org.zerock.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -85,14 +86,18 @@ public class BoardController {		//211p
 	}
 	
 	//삭제(글번호-bno) /board/remove (post)	<- 입력화면(get)
+	@Transactional
 	@PostMapping("/remove")
 	public String remove(Long bno,RedirectAttributes rttr,String pw) {
 		log.info("삭제 url 요청");
 		log.info("입력된 패스워드:"+ pw);
 		if(pw.equals("1234")) { 
-			if(service.remove(bno)) {	//이상 없으면 result란 이름으로 success라는 문자 전송
+			if(service.remove2(bno)) {
+				 
+			}
+			if(service.remove(bno)) {	//이상 없으면 result란 이름으로 success라는 문자 전송				
 				rttr.addFlashAttribute("oper", "remove");
-				rttr.addFlashAttribute("result", bno);
+				rttr.addFlashAttribute("result", bno);				
 			}
 			return "redirect:/board/list";
 		}else {

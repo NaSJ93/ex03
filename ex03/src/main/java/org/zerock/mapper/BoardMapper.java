@@ -31,6 +31,8 @@ public interface BoardMapper {
 	//게시글 삭제
 	int delete(Long bno);
 	
+	int delete2(Long bno);
+	
 	//보너스(작성글 랭킹 5등까지만 작성자,작성글 개수)
 	List<RankVO> rank();	//어처피 한명이 오니까 int로 할 필요가 없 
 	

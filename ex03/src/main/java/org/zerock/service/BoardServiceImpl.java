@@ -51,6 +51,13 @@ public class BoardServiceImpl implements BoardService {
 		log.info("글 삭제 서비스 요청..");
 		return mapper.delete(bno)==1 ? true : false;		
 	}
+	
+	@Override
+	public boolean remove2(Long bno) {		
+		log.info("댓글 삭제 서비스 요청..");
+		return mapper.delete2(bno)==1 ? true : false;
+	}
+
 
 	@Override
 	public BoardVO get(Long bno) {
@@ -98,5 +105,5 @@ public class BoardServiceImpl implements BoardService {
 		
 		return mapper.bestlist();
 	}
-
+	
 }

@@ -57,6 +57,10 @@
 		delete from tbl_board where bno=#{bno}
 	</delete>
 	
+	<delete id="delete2">
+		delete from tbl_reply where bno=#{bno}
+	</delete>
+	
 	<!-- <![CDATA[ ]]> -->
 	<!-- 부등호 '<'를 태크입력할떄 쓰는 <> 이걸로 인식해버리니 이건 명령문이라는 걸 알려주는 것 -->	
 	<select id="rank" resultType="org.zerock.domain.RankVO"> 
